@@ -1,0 +1,139 @@
+/* Stili per la navbar fixed-top */
+body {
+  padding-top: 56px; /* Altezza della navbar */
+  min-height: 100vh;
+  margin: 0;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Stile base per la navbar */
+.navbar {
+  background-color: #01446b !important; /* Colore principale della navbar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Transizione per il menu mobile */
+.navbar-collapse {
+  transition: all 0.3s ease;
+}
+
+/* Stili specifici per mobile */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: #01446b; /* Stesso colore della navbar */
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border-radius: 0.25rem;
+  }
+
+  .navbar-nav .btn {
+    margin-left: 0 !important;
+    margin-top: 0.5rem;
+  }
+
+  /* Stile per i link nel menu mobile */
+  .nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-link:hover {
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.25rem;
+  }
+
+  /* Stile per il pulsante di logout nel menu mobile */
+  .btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+  .btn-outline-light:hover {
+    border-color: white !important;
+    color: white !important;
+  }
+}
+
+/* Stile per l'icona hamburger */
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.rounded-table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.striped-list .list-group-item:nth-child(odd) {
+  background-color: #f8f9fa; /* Grigio chiaro */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #71a9d4 !important; /* azzurro molto chiaro */
+}
+
+.minimal-select {
+  border: none;
+  border-bottom: 1px solid #01446b;
+  background: none;
+  font-size: 1rem;
+  padding: 0.25rem;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
+}
+.minimal-select:hover {
+  border-bottom-color: #01446b;
+}
+
+.table-wrapper {
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  margin-top: 1rem;
+}
+
+/* facoltativo: rimuove margine sotto la tabella */
+.table {
+  margin-bottom: 0;
+}
+
+.col-squadra {
+  width: 160px; /* o 140/180px a seconda delle tue esigenze */
+}
+
+.truncate-text {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* CSS per colonna azioni e nome */
+.table-actions {
+  width: 70px; /* o 60px se vuoi ancora più stretta */
+  text-align: center;
+}
+
+.table-name {
+  max-width: 100px; /* scegli una larghezza adatta alla tua UI */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table-actions i {
+  font-size: 1.2rem;
+}
+
+.table-fixed-layout {
+  table-layout: fixed;
+  width: 100%;
+}

@@ -1,0 +1,10 @@
+#root {
+  width: 100%;
+  padding: 1rem;
+}
+
+/* Mantieni eventuali animazioni/stili specifici se ti servono */
+.card {
+  padding: 2em;
+}
+
