@@ -10,8 +10,8 @@ function Home() {
       </div>
       <div className="mt-5 text-center">
         <p>
-          Insomma, se ami il futsal, o semplicemente ti piace guardare gli altri
-          faticare… sei nel posto giusto.
+          Insomma, se ami il <strong>Futsal</strong>, o semplicemente ti piace
+          guardare gli altri faticare…sei nel posto giusto.
         </p>
         <p>
           <strong>Fischio d’inizio, si parte! 📣</strong>

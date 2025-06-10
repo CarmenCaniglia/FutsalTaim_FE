@@ -49,46 +49,48 @@ function Marcatori() {
       ) : players.length === 0 ? (
         <p>Nessun marcatore disponibile.</p>
       ) : (
-        <table className="table table-bordered table-striped rounded-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Giocatore</th>
-              <th>Squadra</th>
-              <th>Gol</th>
-            </tr>
-          </thead>
-          <tbody>
-            {players.map((player, index) => (
-              <tr key={player._id}>
-                <td>{index + 1}</td>
-                <td
-                  style={{
-                    maxWidth: "120px",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                  title={player.name}
-                >
-                  {player.name}
-                </td>
-                <td
-                  style={{
-                    maxWidth: "120px",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                  title={player.team?.name || "N/A"}
-                >
-                  {player.team?.name || "N/A"}
-                </td>
-                <td>{player.goals}</td>
+        <div style={{ maxHeight: "400px", overflowY: "auto" }}>
+          <table className="table table-bordered table-striped rounded-table mb-0">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Giocatore</th>
+                <th>Squadra</th>
+                <th>Gol</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {players.map((player, index) => (
+                <tr key={player._id}>
+                  <td>{index + 1}</td>
+                  <td
+                    style={{
+                      maxWidth: "120px",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                    title={player.name}
+                  >
+                    {player.name}
+                  </td>
+                  <td
+                    style={{
+                      maxWidth: "120px",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                    title={player.team?.name || "N/A"}
+                  >
+                    {player.team?.name || "N/A"}
+                  </td>
+                  <td>{player.goals}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

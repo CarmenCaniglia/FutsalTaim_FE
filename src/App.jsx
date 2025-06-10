@@ -10,6 +10,7 @@ import Classifiche from "./pages/Classifiche";
 import Marcatori from "./pages/Marcatori";
 import ParticlesCustom from "./components/ParticlesCustom";
 import usePWAUpdate from "./usePWAUpdate";
+import Footer from "./components/Footer";
 
 function App() {
   const isMobile = window.innerWidth < 768;
@@ -55,6 +56,7 @@ function App() {
               <Route path="/login" element={<Login />} />
             </Routes>
           </div>
+          <Footer />
         </Router>
       </div>
     </>
