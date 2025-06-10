@@ -8,3 +8,17 @@
   padding: 2em;
 }
 
+/* Font di default per tutto il sito */
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Font per i titoli */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bangers", cursive;
+}

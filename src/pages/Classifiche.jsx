@@ -1,18 +1,22 @@
-import { useEffect, useState } from 'react';
-import API from '../api';
-import GironeTable from '../components/GironeTable';
+import { useEffect, useState } from "react";
+import API from "../api";
+import GironeTable from "../components/GironeTable";
 
 function Classifiche() {
   const [standings, setStandings] = useState([]);
-  const [gender, setGender] = useState('maschile'); // Stato per il filtro
+  const [gender, setGender] = useState("maschile"); // Stato per il filtro
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchStandings = async () => {
       try {
+        setLoading(true);
         const res = await API.get(`/standings?gender=${gender}`);
         setStandings(res.data);
       } catch (err) {
-        console.error('Errore nel recupero classifiche:', err);
+        console.error("Errore nel recupero classifiche:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -35,7 +39,15 @@ function Classifiche() {
         </select>
       </div>
 
-      {standings.length === 0 ? (
+      {loading ? (
+        <div className="text-center my-5">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">
+              Attendi il caricamento delle classifiche...
+            </span>
+          </div>
+        </div>
+      ) : standings.length === 0 ? (
         <p>Nessuna classifica disponibile.</p>
       ) : (
         standings.map((group) => (

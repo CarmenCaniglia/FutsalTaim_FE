@@ -4,14 +4,18 @@ import API from "../api";
 function Marcatori() {
   const [players, setPlayers] = useState([]);
   const [gender, setGender] = useState("maschile");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTopScorers = async () => {
       try {
+        setLoading(true);
         const res = await API.get(`/players/topscorers?gender=${gender}`);
         setPlayers(res.data);
       } catch (err) {
         console.error("Errore nel recupero marcatori:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -34,7 +38,15 @@ function Marcatori() {
         </select>
       </div>
 
-      {players.length === 0 ? (
+      {loading ? (
+        <div className="text-center my-5">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">
+              Attendi il caricamento dei marcatori...
+            </span>
+          </div>
+        </div>
+      ) : players.length === 0 ? (
         <p>Nessun marcatore disponibile.</p>
       ) : (
         <table className="table table-bordered table-striped rounded-table">

@@ -8,14 +8,18 @@ dayjs.locale("it");
 function Partite() {
   const [matches, setMatches] = useState([]);
   const [gender, setGender] = useState("maschile"); // filtro
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchMatches = async () => {
       try {
+        setLoading(true);
         const res = await API.get(`/matches?gender=${gender}`);
         setMatches(res.data);
       } catch (err) {
         console.error("Errore nel recupero partite:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -38,7 +42,15 @@ function Partite() {
         </select>
       </div>
 
-      {matches.length === 0 ? (
+      {loading ? (
+        <div className="text-center my-5">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">
+              Attendi il caricamento delle partite...
+            </span>
+          </div>
+        </div>
+      ) : matches.length === 0 ? (
         <p>Nessuna partita disponibile.</p>
       ) : (
         <ul className="list-group striped-list">

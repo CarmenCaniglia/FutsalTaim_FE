@@ -1,17 +1,21 @@
-import { useEffect, useState } from 'react';
-import API from '../api';
+import { useEffect, useState } from "react";
+import API from "../api";
 
 function Gironi() {
   const [teams, setTeams] = useState([]);
-  const [gender, setGender] = useState('maschile'); // stato per il filtro
+  const [gender, setGender] = useState("maschile"); // stato per il filtro
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const res = await API.get('/teams');
+        setLoading(true);
+        const res = await API.get("/teams");
         setTeams(res.data);
       } catch (err) {
-        console.error('Errore nel recupero squadre:', err);
+        console.error("Errore nel recupero squadre:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -19,10 +23,10 @@ function Gironi() {
   }, []);
 
   const groupByGroup = () => {
-    const filtered = teams.filter(t => t.gender === gender);
+    const filtered = teams.filter((t) => t.gender === gender);
     const grouped = {};
 
-    filtered.forEach(team => {
+    filtered.forEach((team) => {
       if (!grouped[team.group]) grouped[team.group] = [];
       grouped[team.group].push(team);
     });
@@ -34,32 +38,44 @@ function Gironi() {
 
   return (
     <div className="container">
-      <h2 className="mb-4 text-center">Squadre {gender === 'maschile' ? 'Maschili' : 'Femminili'}</h2>
+      <h2 className="mb-4 text-center">
+        Squadre {gender === "maschile" ? "Maschili" : "Femminili"}
+      </h2>
 
-      
-<div className="mb-4 d-flex align-items-center gap-2">
-<label className="form-label mb-0">Categoria:</label>
-  <select
-    className="minimal-select"
-    value={gender}
-    onChange={(e) => setGender(e.target.value)}>
-    <option value="maschile">Maschile</option>
-    <option value="femminile">Femminile</option>
-  </select>
-</div>
+      <div className="mb-4 d-flex align-items-center gap-2">
+        <label className="form-label mb-0">Categoria:</label>
+        <select
+          className="minimal-select"
+          value={gender}
+          onChange={(e) => setGender(e.target.value)}
+        >
+          <option value="maschile">Maschile</option>
+          <option value="femminile">Femminile</option>
+        </select>
+      </div>
 
-      {Object.entries(groupedTeams).map(([group, teams]) => (
-        <div key={group} className="mb-3">
-          <h4>Girone {group}</h4>
-          <ul className="list-group striped-list">
-            {teams.map(team => (
-              <li className="list-group-item" key={team._id}>
-                {team.name}
-              </li>
-            ))}
-          </ul>
+      {loading ? (
+        <div className="text-center my-5">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">
+              Attendi il caricamento delle squadre...
+            </span>
+          </div>
         </div>
-      ))}
+      ) : (
+        Object.entries(groupedTeams).map(([group, teams]) => (
+          <div key={group} className="mb-3">
+            <h4>Girone {group}</h4>
+            <ul className="list-group striped-list">
+              {teams.map((team) => (
+                <li className="list-group-item" key={team._id}>
+                  {team.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      )}
     </div>
   );
 }
