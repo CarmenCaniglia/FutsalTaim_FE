@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../api";
+import { Link } from "react-router-dom";
 
 function Gironi() {
   const [teams, setTeams] = useState([]);
@@ -67,11 +68,13 @@ function Gironi() {
           <div key={group} className="mb-3">
             <h3>Girone {group}</h3>
             <ul className="list-group striped-list">
-              {teams.map((team) => (
-                <li className="list-group-item" key={team._id}>
-                  {team.name}
-                </li>
-              ))}
+              {teams.map((team) => {
+                return (
+                  <li className="list-group-item" key={team._id}>
+                    <Link to={`/teams/${team._id}`}>{team.name}</Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ))

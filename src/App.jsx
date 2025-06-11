@@ -11,6 +11,7 @@ import Marcatori from "./pages/Marcatori";
 import ParticlesCustom from "./components/ParticlesCustom";
 import usePWAUpdate from "./usePWAUpdate";
 import Footer from "./components/Footer";
+import TeamDetail from "./pages/TeamDetail";
 
 function App() {
   const isMobile = window.innerWidth < 768;
@@ -49,6 +50,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/gironi" element={<Gironi />} />
+              <Route path="/teams/:id" element={<TeamDetail />} />
               <Route path="/partite" element={<Partite />} />
               <Route path="/classifiche" element={<Classifiche />} />
               <Route path="/marcatori" element={<Marcatori />} />
