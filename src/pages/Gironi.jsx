@@ -65,7 +65,7 @@ function Gironi() {
       ) : (
         Object.entries(groupedTeams).map(([group, teams]) => (
           <div key={group} className="mb-3">
-            <h4>Girone {group}</h4>
+            <h3>Girone {group}</h3>
             <ul className="list-group striped-list">
               {teams.map((team) => (
                 <li className="list-group-item" key={team._id}>

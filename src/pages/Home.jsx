@@ -1,9 +1,9 @@
 function Home() {
   return (
-    <div className="container mt-5">
-      <h1 className="mb-4 text-center">🎉Eccoci...Futsal Taim 2.0⚽</h1>
-      <div className="mb-4 text-center">
-        <p>Qui potrai seguire:</p>
+    <div className="container ">
+      <h1 className="mb-4 text-center">🎉 Eccoci...Futsal Taim 2.0 ⚽</h1>
+      <div className="pt-4 mb-4 text-center">
+        <p>Rimani aggiornato su:</p>
         <p>📅 Calendario delle partite</p>
         <p>🥅 Risultati aggiornati</p>
         <p>🔥Classifiche delle squadre</p>

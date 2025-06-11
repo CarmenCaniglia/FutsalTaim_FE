@@ -87,6 +87,7 @@ body {
   cursor: pointer;
   outline: none;
   box-shadow: none;
+  font-size: 1.2rem;
 }
 .minimal-select:hover {
   border-bottom-color: #01446b;

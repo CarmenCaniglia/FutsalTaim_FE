@@ -22,3 +22,14 @@ h5,
 h6 {
   font-family: "Bangers", cursive;
 }
+p,
+label,
+select,
+input,
+button,
+td,
+th,
+li,
+span {
+  font-size: 1.3rem;
+}

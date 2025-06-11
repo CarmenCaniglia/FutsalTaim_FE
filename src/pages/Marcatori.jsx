@@ -49,7 +49,7 @@ function Marcatori() {
       ) : players.length === 0 ? (
         <p>Nessun marcatore disponibile.</p>
       ) : (
-        <div style={{ maxHeight: "400px", overflowY: "auto" }}>
+        <div style={{ maxHeight: "525px", overflowY: "auto" }}>
           <table className="table table-bordered table-striped rounded-table mb-0">
             <thead>
               <tr>
