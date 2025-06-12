@@ -33,3 +33,39 @@ li,
 span {
   font-size: 1.3rem;
 }
+
+.striped-list a {
+  color: black;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+button.custom-filter-btn {
+  color: #063970;
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 1.3rem;
+  cursor: pointer;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+button.custom-filter-btn:hover {
+  color: #042c5f;
+  text-decoration-thickness: 2px;
+}
+
+/* Dropdown voci attiva/hover */
+.dropdown-menu .dropdown-item.active,
+.dropdown-menu .dropdown-item:active {
+  background-color: #c2e2fac9 !important;
+  color: #042c5f !important;
+}
+.dropdown-menu .dropdown-item:hover {
+  background-color: #c2e2fac9 !important;
+  color: #042c5f !important;
+}

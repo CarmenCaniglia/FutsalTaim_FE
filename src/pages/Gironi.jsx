@@ -70,7 +70,7 @@ function Gironi() {
             <ul className="list-group striped-list">
               {teams.map((team) => {
                 return (
-                  <li className="list-group-item" key={team._id}>
+                  <li className="list-group-item striped-list" key={team._id}>
                     <Link to={`/teams/${team._id}`}>{team.name}</Link>
                   </li>
                 );

@@ -13,6 +13,7 @@ function Partite() {
   const [gender, setGender] = useState("maschile"); // filtro
   const [filter, setFilter] = useState("tutte");
   const [loading, setLoading] = useState(true);
+  const [showFilterDropdown, setShowFilterDropdown] = useState(false);
 
   useEffect(() => {
     const fetchMatches = async () => {
@@ -48,9 +49,9 @@ function Partite() {
     <div className="container px-0">
       <h2 className="mb-4 text-center">Elenco Partite</h2>
 
-      <div className="mb-4 d-flex justify-content-between align-items-center flex-wrap">
-        {/* Categoria (a sinistra) */}
-        <div className="d-flex align-items-center gap-2">
+      <div className="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+        {/* Categoria */}
+        <div className="d-flex align-items-center gap-2 mb-2">
           <label className="form-label mb-0">Categoria:</label>
           <select
             className="minimal-select"
@@ -62,18 +63,56 @@ function Partite() {
           </select>
         </div>
 
-        {/* Filtra (a destra) */}
-        <div className="d-flex align-items-center gap-2">
-          <label className="form-label mb-0">Filtra:</label>
-          <select
-            className="minimal-select"
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
+        {/* Filtro come bottone + dropdown */}
+        <div className="position-relative">
+          <button
+            type="button"
+            className="btn custom-filter-btn"
+            onClick={() => setShowFilterDropdown((prev) => !prev)}
           >
-            <option value="tutte">Tutte</option>
-            <option value="giocate">Giocate</option>
-            <option value="daGiocare">Da giocare</option>
-          </select>
+            Filtra <i className="bi bi-filter-left"></i>
+          </button>
+
+          {showFilterDropdown && (
+            <div
+              className="dropdown-menu show mt-2"
+              style={{ display: "block", position: "absolute", right: 0 }}
+            >
+              <button
+                className={`dropdown-item ${
+                  filter === "tutte" ? "active" : ""
+                }`}
+                onClick={() => {
+                  setFilter("tutte");
+                  setShowFilterDropdown(false);
+                }}
+              >
+                Tutte
+              </button>
+              <button
+                className={`dropdown-item ${
+                  filter === "giocate" ? "active" : ""
+                }`}
+                onClick={() => {
+                  setFilter("giocate");
+                  setShowFilterDropdown(false);
+                }}
+              >
+                Giocate
+              </button>
+              <button
+                className={`dropdown-item ${
+                  filter === "daGiocare" ? "active" : ""
+                }`}
+                onClick={() => {
+                  setFilter("daGiocare");
+                  setShowFilterDropdown(false);
+                }}
+              >
+                Da giocare
+              </button>
+            </div>
+          )}
         </div>
       </div>
 

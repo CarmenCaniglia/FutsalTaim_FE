@@ -138,3 +138,99 @@ body {
   table-layout: fixed;
   width: 100%;
 }
+
+@keyframes waterDrop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.player-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.player-list-item {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: #063970;
+  padding: 4px 0;
+  opacity: 0;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+.player-list-item:nth-child(odd) {
+  animation-name: fadeInLeft;
+}
+
+.player-list-item:nth-child(even) {
+  animation-name: fadeInRight;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.logo {
+  animation: dropIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

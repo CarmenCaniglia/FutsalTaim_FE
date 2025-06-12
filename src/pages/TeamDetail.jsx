@@ -12,6 +12,7 @@ import colombia from "../assets/loghi/colombia.png";
 import spina from "../assets/loghi/football_spina.png";
 import stressate from "../assets/loghi/le_stressate.png";
 import maiella from "../assets/loghi/maiella.png";
+import gliantipatici from "../assets/loghi/gli_antipatici.png";
 
 // MAPPATURA NOME -> LOGO
 const logoMap = {
@@ -19,14 +20,12 @@ const logoMap = {
   lemattador: mattador,
   atleticobirrao: birrao,
   fcspazzala: spazzala,
-  testlogo: spazzala,
   colombia20: colombia,
   footballspina: spina,
   lestressate: stressate,
   maiella: maiella,
-  atleticheconinganno: atletiche,
-  gliantipatici: spazzala,
-  maschiletest: mattador,
+  atletiche: atletiche,
+  gliantipatici: gliantipatici,
 };
 
 function TeamDetail() {
@@ -46,7 +45,7 @@ function TeamDetail() {
         setTeam(teamRes.data);
         setPlayers(teamRes.data.players); // I giocatori sono già inclusi nella squadra
       } catch (err) {
-        console.error("❌ Errore nel caricamento squadra:", err);
+        console.error("Errore nel caricamento squadra:", err);
       } finally {
         setLoading(false);
       }
@@ -80,15 +79,13 @@ function TeamDetail() {
   const logoSrc = logoMap[normalizedName];
 
   return (
-    <div className="container">
-      <h2 className="mb-3">{team.name}</h2>
-
+    <div className="container text-center">
       {logoSrc ? (
         <img
           src={logoSrc}
           alt={`${team.name} logo`}
-          className="mb-4"
-          style={{ maxWidth: "200px" }}
+          className="mb-5 logo"
+          style={{ maxWidth: "250px" }}
         />
       ) : (
         <p>
@@ -96,13 +93,12 @@ function TeamDetail() {
         </p>
       )}
 
-      <h4>Giocatori:</h4>
       {players.length === 0 ? (
         <p>Nessun giocatore registrato</p>
       ) : (
-        <ul className="list-group">
+        <ul className="player-list">
           {players.map((player) => (
-            <li className="list-group-item" key={player._id}>
+            <li className="player-list-item" key={player._id}>
               {player.name}
             </li>
           ))}
