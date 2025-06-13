@@ -4,9 +4,16 @@ function Home() {
       <h1 className="mb-4 text-center">🎉 Eccoci...Futsal Taim 2.0 ⚽</h1>
       <div className="pt-4 mb-4 text-center">
         <p>Rimani aggiornato su:</p>
-        <p>📅 Calendario delle partite</p>
-        <p>🥅 Risultati aggiornati</p>
-        <p>🔥Classifiche delle squadre</p>
+        <p>
+          📅 Calendario delle <strong>Partite</strong>
+        </p>
+        <p>
+          🥅 <strong>Risultati</strong> aggiornati
+        </p>
+        <p>
+          🔥Classifiche delle <strong>Squadre</strong> e dei{" "}
+          <strong>Marcatori</strong>
+        </p>
       </div>
       <div className="mt-5 text-center">
         <p>
