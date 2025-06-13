@@ -35,23 +35,31 @@ function TeamDetail() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchTeam = async () => {
+    const fetchTeamAndPlayers = async () => {
       try {
         setLoading(true);
 
-        const teamUrl = `/teams/${id}`;
-        const teamRes = await API.get(teamUrl);
-
+        // Recupera la squadra
+        const teamRes = await API.get(`/teams/${id}`);
         setTeam(teamRes.data);
-        setPlayers(teamRes.data.players); // I giocatori sono già inclusi nella squadra
+
+        // Recupera tutti i giocatori
+        const allPlayersRes = await API.get("/players");
+
+        // Filtra quelli associati a questa squadra
+        const filteredPlayers = allPlayersRes.data.filter(
+          (p) => p.team?._id === id
+        );
+
+        setPlayers(filteredPlayers);
       } catch (err) {
-        console.error("Errore nel caricamento squadra:", err);
+        console.error("Errore nel caricamento squadra o giocatori:", err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchTeam();
+    fetchTeamAndPlayers();
   }, [id]);
 
   if (loading) {
@@ -84,7 +92,7 @@ function TeamDetail() {
         <img
           src={logoSrc}
           alt={`${team.name} logo`}
-          className="mb-5 logo"
+          className="mb-5  kenburns-top-alternate-reverse"
           style={{ maxWidth: "250px" }}
         />
       ) : (

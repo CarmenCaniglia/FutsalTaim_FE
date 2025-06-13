@@ -234,3 +234,19 @@ body {
     transform: translateY(0) scale(1);
   }
 }
+
+@keyframes kenburns-top-alternate-reverse {
+  0% {
+    transform: scale(1) translateY(0);
+    transform-origin: 50% 16%;
+  }
+  100% {
+    transform: scale(1.1) translateY(-15px);
+    transform-origin: top;
+  }
+}
+
+.kenburns-top-alternate-reverse {
+  animation: kenburns-top-alternate-reverse 2s ease-in-out 0s infinite
+    alternate-reverse none;
+}
