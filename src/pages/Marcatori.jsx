@@ -53,10 +53,10 @@ function Marcatori() {
           <table className="table table-bordered table-striped rounded-table mb-0">
             <thead>
               <tr>
-                <th>#</th>
+                <th style={{ width: "1%" }}>#</th>
                 <th>Giocatore</th>
-                <th>Squadra</th>
-                <th>Gol</th>
+                <th className="d-none d-sm-table-cell">Squadra</th>
+                <th style={{ width: "1%" }}>Gol</th>
               </tr>
             </thead>
             <tbody>
@@ -75,6 +75,7 @@ function Marcatori() {
                     {player.name}
                   </td>
                   <td
+                    className="d-none d-sm-table-cell"
                     style={{
                       maxWidth: "120px",
                       whiteSpace: "nowrap",
